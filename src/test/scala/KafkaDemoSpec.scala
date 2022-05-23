@@ -34,13 +34,13 @@ class KafkaDemoSpec extends AnyFlatSpec with should.Matchers {
 
     topology.inputTopic.pipeInput("value value ania ma kota i psa")
     topology.stateStore.get("value").value() shouldBe 2
+    topology.outputTopic.readKeyValuesToMap().get("ania") shouldBe "1"
   }
 
   it should "return size of aggregated values in store" in {
     val topology = helper()
 
     topology.inputTopic.pipeInput("value value ania ma kota i psa")
-    println(topology.stateStore.all())
   }
 
 }
