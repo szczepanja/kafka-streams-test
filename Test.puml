@@ -1,0 +1,20 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' caption Context Diagram for Horrendous Hats (HH) Website
+
+LAYOUT_WITH_LEGEND()
+
+Person_Ext(user1, "User", "A internet user")
+Person_Ext(user2, "User", "A internet user")
+Person_Ext(user3, "User", "A internet user")
+System_Boundary(highLoad, "High Load Platform") {
+Container(slb, "Smart Load Balancer", "Takes all the requests from the internets")
+Container(bidder, "Bidder", "Bidds in the Exchenge")
+Container(serving, "Serving", "Serving of Ad's")
+}
+
+
+SystemDb(kafka, "KAFKA","Events bus")
+
+@enduml
