@@ -5,7 +5,7 @@ import org.apache.kafka.streams.state.Stores
 
 import java.util.Locale
 
-class WordCountProcessor extends Processor[String, String, String, String] {
+class MyProcessor extends Processor[String, String, String, String] {
 
   val store = Stores.keyValueStoreBuilder(
     Stores.persistentKeyValueStore("invStore"),
@@ -22,7 +22,7 @@ class WordCountProcessor extends Processor[String, String, String, String] {
 
 }
 
-object WordCountProcessor extends App {
+object MyProcessor extends App {
 
   val INPUT_TOPIC = "input-topic"
   val OUTPUT_TOPIC = "output-topic"
@@ -31,9 +31,9 @@ object WordCountProcessor extends App {
 
   import org.apache.kafka.streams.scala.ImplicitConversions._
   import org.apache.kafka.streams.scala.serialization.Serdes._
-
-  builder.stream[String, String](INPUT_TOPIC)
-    .process(() => new WordCountProcessor(), "store")
-    .print(System.out)
+//
+//  builder.stream[String, String](INPUT_TOPIC)
+//    .process(() => new MyProcessor(), "store")
+//    .print(System.out)
 
 }
